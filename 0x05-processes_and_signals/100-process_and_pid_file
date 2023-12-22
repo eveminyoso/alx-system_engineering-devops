@@ -1,11 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-PID_FILE="/var/run/myscript.pid"
+BASE_DIR="/var/run/myscript"
+mkdir -p "$BASE_DIR"
 
 # Function to handle cleanup and termination
 cleanup() {
     echo "Cleaning up and terminating..."
-    rm -f "$PID_FILE"
+    rm -rf "$BASE_DIR"
     exit 0
 }
 
@@ -25,9 +26,13 @@ trap 'cleanup' SIGQUIT
 trap 'sigterm_handler' SIGTERM
 trap 'sigint_handler' SIGINT
 
-# Store the PID in a file
-echo $$ > "$PID_FILE"
-echo "PID stored in $PID_FILE"
+# Run 100 processes in the background
+for i in {1..100}; do
+    PID_FILE="$BASE_DIR/process_$i.pid"
+    echo $$ > "$PID_FILE"
+    echo "PID $i stored in $PID_FILE"
+    (sleep 10; echo "Process $i completed") &
+done
 
 # Display messages indefinitely
 echo "To infinity and beyond..."
