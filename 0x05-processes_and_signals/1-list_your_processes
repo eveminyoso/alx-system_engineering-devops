@@ -2,4 +2,4 @@
 # Displaying a list of currently running processes
 # shellcheck disable=SC2009
 
-ps aux | awk 
+ps aux | awk '{ print $1, $2, $9, $10 }' 
