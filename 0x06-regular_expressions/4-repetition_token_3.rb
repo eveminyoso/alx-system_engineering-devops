@@ -15,3 +15,6 @@ else
   if matches.any?
     puts input
   else
+    puts ""
+  end
+end
