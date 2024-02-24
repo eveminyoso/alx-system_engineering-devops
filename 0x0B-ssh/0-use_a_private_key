@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Server details
+server_address="your_server_address"
+user="ubuntu"
+
+# SSH connection using private key
+ssh -i ~/.ssh/school $user@$server_address
