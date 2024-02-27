@@ -5,7 +5,10 @@ key_file="school"
 passphrase="betty"
 
 # Specify the full path for the private key file
-private_key_file="~/.ssh/$key_file"
+private_key_file="$HOME/.ssh/$key_file"
+
+# Create ~/.ssh/ directory if it doesn't exist
+mkdir -p "$HOME/.ssh"
 
 # Create RSA key pair with 4096 bits and passphrase protection
 ssh-keygen -t rsa -b 4096 -f "$private_key_file" -N "$passphrase"
