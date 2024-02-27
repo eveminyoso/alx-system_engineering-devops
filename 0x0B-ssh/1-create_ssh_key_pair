@@ -4,8 +4,11 @@
 key_file="school"
 passphrase="betty"
 
+# Specify the full path for the private key file
+private_key_file="~/.ssh/$key_file"
+
 # Create RSA key pair with 4096 bits and passphrase protection
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/$key_file -N "$passphrase"
+ssh-keygen -t rsa -b 4096 -f "$private_key_file" -N "$passphrase"
 
 echo "RSA key pair created successfully."
-echo "Private key saved to: ~/.ssh/$key_file"
+echo "Private key saved to: $private_key_file"

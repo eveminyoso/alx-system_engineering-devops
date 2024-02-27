@@ -5,4 +5,4 @@ server_address="your_server_address"
 user="ubuntu"
 
 # SSH connection using private key
-ssh -i ~/root/.ssh/school $user@$server_address
+ssh -i /root/.ssh/school $user@$server_address
